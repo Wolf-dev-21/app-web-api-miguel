@@ -1,0 +1,10 @@
+json-server
+react-icons
+react-router-dom
+uuid
+
+npm run backend rodar o bd.json
+
+end point 
+http://localhost:5000/books
+http://localhost:5000/categories

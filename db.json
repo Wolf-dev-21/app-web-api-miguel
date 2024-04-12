@@ -1,27 +1,58 @@
 {
-
-    "books":[],
-    "categories":[
-        {
-            "id": 1,
-            "name": "Ficção cientifica"
-        },
-        {
-            "id": 2,
-            "name": "Back-end"
-        },
-        {
-            "id": 3,
-            "name": "Front-end"
-        },
-        {
-            "id": 4,
-            "name": "Banco de dados"
-        },
-        {
-            "id": 5,
-            "name": "Clound computing"
-        }
-    ]
-
+  "books": [
+    {
+      "id": "8935",
+      "nome_livro": "aaaaa",
+      "nome_autor": "aaaaa",
+      "descricao_livro": "aaaaa"
+    },
+    {
+      "id": "75d0",
+      "nome_livro": "aaaa",
+      "nome_autor": "aaaa",
+      "descricao_livro": "aaa"
+    },
+    {
+      "id": "8d30",
+      "nome_livro": "aaaaa",
+      "nome_autor": "sssss",
+      "descricao_livro": "aaa",
+      "category": {
+        "id": "1",
+        "category": "Ficção cientifica"
+      }
+    },
+    {
+      "id": "7574",
+      "nome_livro": "aaa",
+      "nome_autor": "aaa",
+      "descricao_livro": "aaa",
+      "category": {
+        "id": "2",
+        "category": "Back-end"
+      }
+    }
+  ],
+  "categories": [
+    {
+      "id": "1",
+      "name": "Ficção cientifica"
+    },
+    {
+      "id": "2",
+      "name": "Back-end"
+    },
+    {
+      "id": "3",
+      "name": "Front-end"
+    },
+    {
+      "id": "4",
+      "name": "Banco de dados"
+    },
+    {
+      "id": "5",
+      "name": "Clound computing"
+    }
+  ]
 }

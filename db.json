@@ -31,6 +31,36 @@
         "id": "2",
         "category": "Back-end"
       }
+    },
+    {
+      "id": "beec",
+      "nome_livro": "Teste de cadastro  de livro 2",
+      "nome_autor": "Teste de autor 2",
+      "descricao_livro": "Teste de descrição 2",
+      "category": {
+        "id": "4",
+        "category": "Banco de dados"
+      }
+    },
+    {
+      "id": "ac32",
+      "nome_livro": "a",
+      "nome_autor": "a",
+      "descricao_livro": "a",
+      "category": {
+        "id": "4",
+        "category": "Banco de dados"
+      }
+    },
+    {
+      "id": "626d",
+      "nome_livro": "b",
+      "nome_autor": "b",
+      "descricao_livro": "b",
+      "category": {
+        "id": "1",
+        "category": "Ficção cientifica"
+      }
     }
   ],
   "categories": [

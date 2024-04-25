@@ -4,13 +4,21 @@
       "id": "8935",
       "nome_livro": "aaaaa",
       "nome_autor": "aaaaa",
-      "descricao_livro": "aaaaa"
+      "descricao_livro": "aaaaa",
+      "category": {
+        "id": "1",
+        "category": "Ficção cientifica"
+      }
     },
     {
       "id": "75d0",
       "nome_livro": "aaaa",
       "nome_autor": "aaaa",
-      "descricao_livro": "aaa"
+      "descricao_livro": "aaa",
+      "category": {
+        "id": "1",
+        "category": "Ficção cientifica"
+      }
     },
     {
       "id": "8d30",

@@ -1,15 +1,38 @@
-import { useLocation } from 'react-router-dom'
-import Message from '../../components/message/Message'
-import styles from './Livro.module.css'
+import {useState, useEffect} from 'react';
+import { useLocation } from 'react-router-dom';
+
+import Message from '../../components/message/Message';
+import Container from '../../components/Container/Container';
+import CardBook from '../../components/cardBook/CardBook';
+
+
+import styles from './Livro.module.css';
 
 export default function Livros() {
+
+  const [books, setBooks] = useState([]);
+
+  useEffect(() => {
+
+    fetch('http://localhost:5000/books', {
+      method: 'GET',
+      headers:{
+        'Content-Type':'application/json'
+      },
+    })
+    .then((resp) => resp.json())
+    .then((data)=>{setBooks(data); console.log(data)})
+    .catch((err) =>{console.log(err)});
+
+  }, []) ;
 
   const location = useLocation();
   let message='';
 
-  console.log('Location state: ' + location.state);
+  
 
-  if (location.state) {
+  if (location.state) { 
+      console.log('Location state: ' + location.state);
       message=location.state;
   }
 
@@ -25,7 +48,25 @@ export default function Livros() {
                       />
         }
 
-        
+        {/* <Container> */}
+
+        {
+          // books.length > 0 ? books.map((e)=>console.log(e)) : <></>
+        }
+
+        {
+            books.map((book) =>(
+              <CardBook
+                id={book.id}
+                livro={book.nome_livro}
+                autor={book.nome_autor}
+                categoria={book.category.category}/>
+            ))
+        }
+
+
+          
+        {/* </Container> */}
 
     </section>
   )

@@ -56,9 +56,6 @@ export default function NovoLivro() {
       category: event.target.options[event.target.selectedIndex].text
       
     }});
-
-
-
   }
 
    /* inserção dos dados de livro */

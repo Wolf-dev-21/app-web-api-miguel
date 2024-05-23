@@ -2,9 +2,9 @@
   "books": [
     {
       "id": "b09f",
-      "nome_livro": "Livro teste 2",
-      "nome_autor": "Autor teste 2",
-      "descricao_livro": "Livro para teste 2",
+      "nome_livro": "Livro teste 2 ##",
+      "nome_autor": "Autor teste 2 ###",
+      "descricao_livro": "Livro para teste 2 ###",
       "category": {
         "id": "2",
         "category": "Back-end"

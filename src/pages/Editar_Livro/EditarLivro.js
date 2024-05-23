@@ -2,11 +2,12 @@ import styles from './EditarLivro.module.css'
 
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import Input from '../../components/Input/Input'
 import { Select } from '../Select/Select';
 
-function EditarLivro(params){
+function EditarLivro(){
 
      /* State de dados das categorias vindas do aqruivo db,json */
     const[categories, setCategories] = useState([]);
@@ -15,7 +16,10 @@ function EditarLivro(params){
     const {id} = useParams();
     console.log('ID:' + id);
 
-    const [book, setBook] = useState({})
+    //Objeto de navegação
+    const navigate = useNavigate();
+
+    const [book, setBook] = useState({});
 
      /* Recupera os dados de categoria do arquivo db,json */
     useEffect( ()=>{ 
@@ -75,14 +79,36 @@ function handlerChangeCategory(event) {
     }});
 }
 
+//Função de submit controlado dos dados
+function submit(event){
+    event.preventDefault();
+    editBook(book);
+}
 
+//Funcionalidade de edição de livro
+function editBook(book){
+
+    fetch(`http://localhost:5000/books/${id}`, {
+        method: 'PATCH',
+        headers:{
+            'Content-Type':'application/json'
+        },
+        body: JSON.stringify(book)
+    })
+    .then(resp => resp.json())
+    .then((data)=>{
+        setBook(data);
+        navigate('/Livros',{state:'Livro alterado com sucesso!'});
+    })
+    .catch((error) => console.log(error));
+}
 
     return(
 
     <div className={styles.book_container}> 
         <h1>Edição de Livro</h1>
 
-        <form>
+        <form onSubmit={submit}>
 
         <Input
             type="text"
@@ -120,6 +146,8 @@ function handlerChangeCategory(event) {
             options={categories}
             handlerOnChange={handlerChangeCategory}
         />
+
+        <p>In<Input type='submit' value='Editar Livro' /></p>
 
         </form>
 

@@ -18,14 +18,17 @@ export default function Livros() {
 
   useEffect(() => {
 
-    fetch('http://localhost:5000/books', {
+    fetch('http://localhost:5000/listagemLivros', {
       method: 'GET',
+      mode: 'cors',
       headers:{
-        'Content-Type':'application/json'
+        'Content-Type':'application/json',
+        'Access-Control-Allow-Origin':'*',
+        'Access-Control-Allow-Headers':'*',
       },
     })
     .then((resp) => resp.json())
-    .then((data)=>{setBooks(data); console.log(data)})
+    .then((data)=>{setBooks(data.data); console.log(data.data)})
     .catch((err) =>{console.log(err)});
 
   }, []) ;
@@ -33,10 +36,13 @@ export default function Livros() {
   // Função de exlusão de livro
   function removeBooks(id){
 
-    fetch(`http://localhost:5000/books/${id}`,{
+    fetch(`http://localhost:5000/excluirLivro/${id}`,{
       method: 'DELETE',
+      mode: 'cors',
       headers:{
-        'Content-Type':'application/json'
+        'Content-Type':'application/json',
+        'Access-Control-Allow-Origin':'*',
+        'Access-Control-Allow-Headers':'*',
       },
     })
     .then(resp => resp.json())
@@ -91,11 +97,11 @@ export default function Livros() {
         {
             books.map((book) =>(
               <CardBook
-                id={book.id}
+                id={book.cod_livro}
                 livro={book.nome_livro}
-                autor={book.nome_autor}
-                categoria={book.category.category}
-                key={book.id}
+                autor={book.autor_livro}
+                // categoria={book.category.category}
+                key={book.cod_livro}
                 handlerRemove={removeBooks}
                 />
                 

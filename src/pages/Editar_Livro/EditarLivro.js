@@ -22,27 +22,27 @@ function EditarLivro(){
     const [book, setBook] = useState({});
 
      /* Recupera os dados de categoria do arquivo db,json */
-    useEffect( ()=>{ 
-    fetch(
-        'http://localhost:5000/categories',
-        {
-            method:'get',
-            headers:{
-            'content-type':'application/json'
-            }
-        }).then(
-        (resp) =>resp.json()
-        ).then(
-            (data)=>{
-            setCategories(data);
-            console.log(data);
-            }
-        ).catch(
-        (error)=>{
-            console.log(error);
-        }
-        )
-}, [])
+//     useEffect( ()=>{ 
+//     fetch(
+//         'http://localhost:5000/categories',
+//         {
+//             method:'get',
+//             headers:{
+//             'content-type':'application/json'
+//             }
+//         }).then(
+//         (resp) =>resp.json()
+//         ).then(
+//             (data)=>{
+//             setCategories(data);
+//             console.log(data);
+//             }
+//         ).catch(
+//         (error)=>{
+//             console.log(error);
+//         }
+//         )
+// }, [])
 
 
 
@@ -50,14 +50,17 @@ function EditarLivro(){
     // Recuperando os dados de livro para edição
     useEffect(() => {
 
-        fetch(`http://localhost:5000/books/${id}`, {
+        fetch(`http://localhost:5000/listagemLivro/${id}`, {
         method: 'GET',
+        mode: 'cors',
         headers:{
-            'Content-Type':'application/json'
+        'Content-Type':'application/json',
+        'Access-Control-Allow-Origin':'*',
+        'Access-Control-Allow-Headers':'*',
         },
     })
         .then((resp) => resp.json())
-        .then((data)=>{setBook(data); console.log(data)})
+        .then((data)=>{setBook(data.data); console.log(data.data)})
         .catch((err) =>{console.log(err)});
     
     }, []) ;
@@ -88,10 +91,13 @@ function submit(event){
 //Funcionalidade de edição de livro
 function editBook(book){
 
-    fetch(`http://localhost:5000/books/${id}`, {
-        method: 'PATCH',
+    fetch(`http://localhost:5000/alterarLivro`, {
+        method: 'PUT',
+        mode: 'cors',
         headers:{
-            'Content-Type':'application/json'
+        'Content-Type':'application/json',
+        'Access-Control-Allow-Origin':'*',
+        'Access-Control-Allow-Headers':'*',
         },
         body: JSON.stringify(book)
     })
@@ -122,11 +128,11 @@ function editBook(book){
 
         <Input
         type="text"
-        name="nome_autor"
-        id="nome_autor"
+        name="autor_livro"
+        id="autor_livro"
         placeholder="Digite o nome do autor"
         text="Digite o nome do autor"
-        value={book.nome_autor}
+        value={book.autor_livro}
         handlerOnChange={handlerOnChangeBook}
         />
 

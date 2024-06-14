@@ -28,7 +28,8 @@ export default function Livros() {
       },
     })
     .then((resp) => resp.json())
-    .then((data)=>{setBooks(data.data); console.log(data.data)})
+    .then((data)=>{setBooks(data.data); 
+      console.log(data.data)})
     .catch((err) =>{console.log(err)});
 
   }, []) ;
@@ -48,7 +49,7 @@ export default function Livros() {
     .then(resp => resp.json())
     .then(
       (data) =>{
-        setBooks(books.filter((book_data) => book_data.id != id ))
+        setBooks(books.filter((book_data) => book_data.cod_livro != id ))
         //alert('Livro ecluído!')
         setBookMessage('Livro exluído com sucesso!')
       }

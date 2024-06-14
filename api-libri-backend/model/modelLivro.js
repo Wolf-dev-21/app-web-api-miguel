@@ -33,6 +33,6 @@ const modeLivro = connection.define(
     }
 );
 
-// modeLivro.sync({force:true});
+modeLivro.sync({force:true});
 
 module.exports = modeLivro;

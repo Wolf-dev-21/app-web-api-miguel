@@ -19,28 +19,32 @@ export default function NovoLivro() {
   /* State de dados que vai armazenar o objeto json de livro*/
   const[book, setBook] = useState({});
 
+
+
    /* Recupera os dados de categoria do arquivo db,json */
-  useEffect( ()=>{ 
-  fetch(
-      'http://localhost:5000/categories',
-      {
-        method:'get',
-        headers:{
-          'content-type':'application/json'
-        }
-      }).then(
-        (resp) =>resp.json()
-      ).then(
-          (data)=>{
-            setCategories(data);
-            console.log(data);
-          }
-      ).catch(
-        (error)=>{
-          console.log(error);
-        }
-      )
-}, [])
+//   useEffect( ()=>{ 
+//   fetch(
+//       'http://localhost:5000/categories',
+//       {
+//         method:'get',
+//         headers:{
+//           'content-type':'application/json'
+//         }
+//       }).then(
+//         (resp) =>resp.json()
+//       ).then(
+//           (data)=>{
+//             setCategories(data);
+//             console.log(data);
+//           }
+//       ).catch(
+//         (error)=>{
+//           console.log(error);
+//         }
+//       )
+// }, [])
+
+
 
   /* Handler de captura dos dados de input (nomde do livro, autor, descrição) */
   function handlerOnChangeBook(event) {
@@ -60,10 +64,13 @@ export default function NovoLivro() {
 
    /* inserção dos dados de livro */
   function createBook(book){
-    fetch('http://localhost:5000/books',{
+    fetch('http://localhost:5000/inserirLivro',{
       method:'post',
+      mode:'cors' ,
       headers:{
-        'content-type':'application/json'
+        'content-type':'application/json',
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': '*',
     },
     body: JSON.stringify(book)
   })
@@ -113,8 +120,8 @@ export default function NovoLivro() {
         </p> */}
         <Input
           type="text"
-          name="nome_autor"
-          id="nome_autor"
+          name="autor_livro"
+          id="autor_livro"
           placeholder="Digite o nome do autor"
           text="Digite o nome do autor"
           handlerOnChange={handlerOnChangeBook}
